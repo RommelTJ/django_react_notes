@@ -71,6 +71,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "corsheaders",
     "rest_framework",
+    "channels",
 ]
 LOCAL_APPS = [
     "django_react_notes.users.apps.UsersAppConfig",
@@ -139,6 +140,8 @@ CORS_ORIGIN_WHITELIST = (
     "0.0.0.0:3000",
     "127.0.0.1:3000"
 )
+
+ASGI_APPLICATION = "django_react_notes.routing.application"
 
 # STATIC
 # ------------------------------------------------------------------------------
