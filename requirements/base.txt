@@ -4,6 +4,7 @@ Pillow==6.0.0  # https://github.com/python-pillow/Pillow
 argon2-cffi==19.1.0  # https://github.com/hynek/argon2_cffi
 redis==3.2.1  # https://github.com/antirez/redis
 channels==2.1.7
+channels-redis==2.3.3
 
 # Django
 # ------------------------------------------------------------------------------

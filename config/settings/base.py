@@ -141,7 +141,18 @@ CORS_ORIGIN_WHITELIST = (
     "127.0.0.1:3000"
 )
 
-ASGI_APPLICATION = "django_react_notes.routing.application"
+ASGI_APPLICATION = "django_react_notes.routing.application" # web sockets routing
+
+# Redis message broker settings
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "HOSTS": [("127.0.0.1", 6379), ("localhost", 6379), ("0.0.0.0", 6379)],
+        }
+    }
+}
 
 # STATIC
 # ------------------------------------------------------------------------------
