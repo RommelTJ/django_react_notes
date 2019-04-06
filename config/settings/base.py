@@ -69,11 +69,14 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "corsheaders",
     "rest_framework",
+    "channels",
 ]
 LOCAL_APPS = [
     "django_react_notes.users.apps.UsersAppConfig",
     # Your stuff: custom apps go here
+    "notes",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -122,6 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#middleware
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -130,6 +134,25 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    "localhost:3000",
+    "0.0.0.0:3000",
+    "127.0.0.1:3000"
+)
+
+ASGI_APPLICATION = "django_react_notes.routing.application" # web sockets routing
+
+# Redis message broker settings
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "HOSTS": [("127.0.0.1", 6379), ("localhost", 6379), ("0.0.0.0", 6379)],
+        }
+    }
+}
 
 # STATIC
 # ------------------------------------------------------------------------------
