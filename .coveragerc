@@ -1,0 +1,5 @@
+[run]
+include = django_react_notes/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
