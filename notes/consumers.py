@@ -22,7 +22,7 @@ class NoteConsumer(WebsocketConsumer):
         )
 
     def receive(self, text_data=None, bytes_data=None):
-        text_data = json.load(text_data)
+        text_data = json.loads(text_data)
         title = text_data['title']
         content = text_data['content']
         _id = text_data['id']
